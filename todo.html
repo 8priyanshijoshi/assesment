@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>Document</title>
+    
+    <style>
+        body{
+            background-color: rgb(21, 64, 64);
+        }
+        .container{
+            width: 360px;
+            padding: 33px;
+            text-align: center;
+            background-color: white;
+            margin-left: 33%;
+            margin-top: 5px;
+        }
+        input{
+            width: 270px;
+            padding: 8px;
+            border: 2px solid aqua;
+            outline: none;
+        }
+        button{
+            width: 60px;
+            height: 40px;
+            background-color: rgb(26, 61, 61);
+            color: white;
+            border: none;
+            outline: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        .text ul{
+            position: relative;
+            background-color: rgb(26, 61, 61);
+            color: white;
+            font-size: 19px;
+            text-align: left;
+            padding: 7px;
+        }
+        .text ul i{
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ToDo</h1>
+        <div class="inputs">
+            <input type="text" placeholder="Add task" id="inp">
+            <button onclick="Add()">Add</button>
+        </div>
+        <div class="text">
+
+        </div>
+    </div>
+
+    <script>
+        let inputs = document.getElementById("inp");
+        let text = document.querySelector(".text");
+
+        function Add(){
+            if(inputs.value == ""){
+                alert("Please add task");
+            }
+            else{
+                let newEle = document.createElement("ul");
+                newEle.innerHTML=`${inputs.value}<i class="fa-solid fa-trash-can"></i>`;
+                text.append(newEle);
+                inputs.value="";
+                newEle.querySelector("i").addEventListener("click",remove);
+                function remove(){
+                    newEle.remove()
+                }
+            }
+        }
+    </script>
+</body>
+</html>
